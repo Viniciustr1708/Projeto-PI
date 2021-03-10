@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body><b>
+    <button onclick="mostrar1()" id="aparecer1">Calculadora de Gastos</button>
+    <div id="div1" style="display: none;background-color: blue;width: 500px;">
+        <button onclick="esconder1()">Esconder Calculadora de Gastos</button><br>
+        Valor do Arduino R$<input type="text" id="valor_ard"><br>
+    Quantidade de Arduinos <input type="text" id="quant_ard"><br>
+    <button onclick="gasto()">Valor Gasto:</button><span id="valor_gasto"></span><br>
+</div>
+<button onclick="mostrar2()" id="aparecer2">Calculadora de Ganho</button>
+    <div id="div2" style="display: none;background-color: rgb(0, 217, 255);width: 700px;">
+        <button onclick="esconder2()">Esconder Calculadora de Ganho</button><br>
+        Valor mensal do serviço prestado R$<input type="text" id="valor_mensal"><br>
+    Na empresa <input type="text" id="e1">o serviço vai ser prestato por <input type="text" id="tempo1"> meses <br>
+    Na empresa <input type="text" id="e2">o serviço vai ser prestato por <input type="text" id="tempo2"> meses <br>
+    Na empresa <input type="text" id="e3">o serviço vai ser prestato por <input type="text" id="tempo3"> meses <br>
+    Na empresa <input type="text" id="e4">o serviço vai ser prestato por <input type="text" id="tempo4"> meses <br>
+    Na empresa <input type="text" id="e5">o serviço vai ser prestato por <input type="text" id="tempo5"> meses <br>
+    
+    <button onclick="ganho()">Valor Ganho:</button><br>
+    <samp id="valor_ganho"></samp>
+</div> 
+<div style="background-color: cadetblue;width: 500px;">
+    <button onclick="lucro()">Lucro: </button><span id="lucrot"></span>
+</div>
+</b><br>
+<button style="display: none;" onclick="limpar_tudo()" id="ld">Limpar Resultados</button>
+</body>
+</html>
+<script>
+    function gasto(){
+        var gasto = Number(valor_ard.value)*Number(quant_ard.value);
+        valor_gasto.innerHTML = `R$ ${gasto}`;
+        ld.style.display = 'block';
+    }
+    function ganho(){
+        var servico = Number(valor_mensal.value);
+        var tempototal = Number(tempo1.value)+Number(tempo2.value)+Number(tempo3.value)+Number(tempo4.value)+Number(tempo5.value);
+        valor_ganho.innerHTML =  `Na empresa ${e1.value}  nosso ganho é de R$  ${servico * tempo1.value}<br>`;
+        valor_ganho.innerHTML += `Na empresa ${e2.value}  nosso ganho é de R$  ${servico * tempo2.value}<br>`;
+        valor_ganho.innerHTML += `Na empresa ${e3.value}  nosso ganho é de R$  ${servico * tempo3.value}<br>`;
+        valor_ganho.innerHTML += `Na empresa ${e4.value}  nosso ganho é de R$  ${servico * tempo4.value}<br>`;
+        valor_ganho.innerHTML += `Na empresa ${e5.value}  nosso ganho é de R$  ${servico * tempo5.value}<br>`;
+        valor_ganho.innerHTML += `Nosso ganho total é de R$ ${servico * tempototal}`;
+        ld.style.display = 'block';
+    }
+    function lucro(){
+        var gasto = Number(valor_ard.value)*Number(quant_ard.value);
+        var servico = Number(valor_mensal.value);
+        var tempototal = Number(tempo1.value)+Number(tempo2.value)+Number(tempo3.value)+Number(tempo4.value)+Number(tempo5.value);
+
+        lucrot.innerHTML = `R$ ${servico * tempototal - gasto}`;
+        ld.style.display = 'block';
+    }
+    function mostrar1(){
+        aparecer1.style.display = 'none'
+        div1.style.display = 'block'
+    }
+    function mostrar2(){
+        aparecer2.style.display = 'none'
+        div2.style.display = 'block'
+    }
+    function esconder1(){
+        aparecer1.style.display = 'block'
+        div1.style.display = 'none'
+    }
+    function esconder2(){
+        aparecer2.style.display = 'block'
+        div2.style.display = 'none'
+    }
+    function limpar_tudo(){
+        valor_gasto.innerHTML = '';
+        lucrot.innerHTML = '';
+        valor_ganho.innerHTML = '';
+        ld.style.display = 'none'
+
+    }
+</script>

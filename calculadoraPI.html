@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clculadora</title>
+</head>
+<body>
+    <h3>Orçamento seguros + taxa de luminosidade</h3>
+    Insira o valor do seguro:
+    <input type="text" id="valor_seguro" placeholder="R$" autofocus > <br>
+    <button onclick="orcamento()">Calcular</button><br><br>
+    <div>
+        O seguro irá ser calculado por região perante a sua taxa de luminosidade. Ao calcular<br>
+        irá aparecer o preço de cada <b>Região</b> .
+    </div>
+    <br>
+
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function orcamento(){
+        var norte =  Number(valor_seguro.value) + 150 ;
+        var sul = Number(valor_seguro.value) + 230 ;
+        var leste = Number(valor_seguro.value) + 350 ;
+        var oeste = Number(valor_seguro.value) + 165 ;
+        var centro = Number(valor_seguro.value) + 100 ;
+        div_msg.innerHTML = `O valor total do seguro para região Norte é R$ <b>${norte}</b><br>`;
+        div_msg.innerHTML += `O valor total do seguro para região Sul é R$ <b>${sul}</b> <br>`;
+        div_msg.innerHTML += `O valor total do seguro para região Leste é R$ <b>${leste}</b> <br>`;
+        div_msg.innerHTML += `O valor total do seguro para região Oeste é R$ <b>${oeste}</b> <br>`;
+        div_msg.innerHTML += `O valor total do seguro para região do Centro é R$ <b>${centro}</b> <br>`;
+        //div_msg.innerHTML += `A diferença de valores é de R$ ${roterude - nicanor}`;
+    }
+</script>
